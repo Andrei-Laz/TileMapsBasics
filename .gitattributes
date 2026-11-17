@@ -1,0 +1,65 @@
+# .gitattributes para proyectos Unity · 1CESVJ 2026-27
+# Va en la MISMA carpeta que el .gitignore: la raíz del proyecto Unity
+# (la que contiene Assets/, Packages/ y ProjectSettings/).
+#
+# IMPORTANTE: este archivo activa Git LFS para los assets pesados.
+# Antes del primer commit, una vez por ordenador:  git lfs install
+# (GitHub Desktop lo trae incluido y lo ofrece al detectar este archivo).
+
+# Saltos de línea coherentes entre Windows y Linux
+* text=auto
+
+# ---------------------------------------------------------------
+# TEXTO: se guarda en Git normal (no en LFS)
+# ---------------------------------------------------------------
+*.cs         text diff=csharp
+*.shader     text
+*.hlsl       text
+*.json       text
+*.md         text
+*.txt        text
+
+# Archivos YAML de Unity: escenas, prefabs, materiales, .meta...
+# Son texto pequeño y NO deben ir a LFS. En un conflicto, elegid
+# una de las dos versiones (no se fusionan bien a mano).
+*.unity      text eol=lf
+*.prefab     text eol=lf
+*.asset      text eol=lf
+*.mat        text eol=lf
+*.anim       text eol=lf
+*.controller text eol=lf
+*.overrideController text eol=lf
+*.physicMaterial text eol=lf
+*.meta       text eol=lf
+
+# ---------------------------------------------------------------
+# GIT LFS: assets binarios pesados
+# ---------------------------------------------------------------
+# Imágenes y texturas
+*.png   filter=lfs diff=lfs merge=lfs -text
+*.jpg   filter=lfs diff=lfs merge=lfs -text
+*.jpeg  filter=lfs diff=lfs merge=lfs -text
+*.tga   filter=lfs diff=lfs merge=lfs -text
+*.tif   filter=lfs diff=lfs merge=lfs -text
+*.tiff  filter=lfs diff=lfs merge=lfs -text
+*.psd   filter=lfs diff=lfs merge=lfs -text
+*.exr   filter=lfs diff=lfs merge=lfs -text
+*.hdr   filter=lfs diff=lfs merge=lfs -text
+# Modelos 3D
+*.fbx   filter=lfs diff=lfs merge=lfs -text
+*.obj   filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+*.glb   filter=lfs diff=lfs merge=lfs -text
+# Audio
+*.wav   filter=lfs diff=lfs merge=lfs -text
+*.mp3   filter=lfs diff=lfs merge=lfs -text
+*.ogg   filter=lfs diff=lfs merge=lfs -text
+*.aif   filter=lfs diff=lfs merge=lfs -text
+*.aiff  filter=lfs diff=lfs merge=lfs -text
+# Vídeo
+*.mp4   filter=lfs diff=lfs merge=lfs -text
+*.mov   filter=lfs diff=lfs merge=lfs -text
+*.webm  filter=lfs diff=lfs merge=lfs -text
+# Fuentes
+*.ttf   filter=lfs diff=lfs merge=lfs -text
+*.otf   filter=lfs diff=lfs merge=lfs -text
